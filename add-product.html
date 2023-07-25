@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <title>Add product</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="js/add-product.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <a href="/" class="logo">Best<strong>Posts</strong></a>
+            <nav class="mainNav">
+                <a href="index.html" class="navLink">Home</a>
+                <a href="add-post.html" class="navLink">Add post</a>
+            </nav>
+        </div>
+    </header>
+    <!-- sukurti forma kuri leidzia supildyti title, price, brand, category, thumbnail, -->
+    <div class="container">
+        <h1>Add new product</h1>
+        <form id="newProduct" class="new-product">
+            <div class="inputBlock">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title">
+            </div>
+            <div class="inputBlock">
+                <label for="price">Price:</label>
+                <input type="text" id="price" name="price">
+            </div>
+            <div class="inputBlock">
+                <label for="brand">Price:</label>
+                <input type="text" id="brand" name="brand">
+            </div>
+            <div class="inputBlock">
+                <label for="thumbnail">Price:</label>
+                <input type="text" id="thumbnail" name="thumbnail">
+            </div>
+            <select name="category" id="category">
+                <option hidden>choose category</option>
+                <option value="smartphones">smartphones</option>
+                <option value="laptops">laptops</option>
+                <option value="fragrances">fragrances</option>
+                <option value="skincare">skincare</option>
+                <option value="groceries">groceries</option>
+                <option value="home-decoration">home decoration</option>
+            </select>
+
+            <button type="submit">Create</button>
+        </form>
+    </div>
+</body>
+
+</html>
