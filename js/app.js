@@ -5,6 +5,7 @@ const els = {
   postsContainer: document.getElementById('posts'),
   sortTitleBtn: document.getElementById('sort-title'),
   sortTitleBtnReverse: document.getElementById('sort-title-reverse'),
+  title15Btn: document.getElementById('title15'),
 };
 console.log('els ===', els);
 const url = 'https://dummyjson.com/posts';
@@ -19,6 +20,7 @@ let mainPostArr = [];
 
 els.sortTitleBtn.addEventListener('click', sortPostByTitle);
 els.sortTitleBtnReverse.addEventListener('click', sortPostByTitleReverse);
+els.title15Btn.addEventListener('click', title15);
 
 getPosts();
 
@@ -35,9 +37,9 @@ function getPosts() {
 function render() {
   els.postsContainer.innerHTML = '';
   // spauzdindami gautime parsiustus duomenis
-  console.log('render fn mainPostArr ===', mainPostArr);
+  // console.log('render fn mainPostArr ===', mainPostArr);
   const htmlElArr = mainPostArr.map((pObj) => makeOnePostEl(pObj));
-  console.log('htmlElArr ===', htmlElArr);
+  // console.log('htmlElArr ===', htmlElArr);
   els.postsContainer.append(...htmlElArr);
 }
 
@@ -70,5 +72,13 @@ function sortPostByTitle() {
 
 function sortPostByTitleReverse() {
   mainPostArr.sort((aObj, bObj) => aObj.title < bObj.title);
+  render();
+}
+
+function title15() {
+  mainPostArr.map((postObj) => {
+    postObj.title = postObj.title.slice(0, 5);
+    return postObj;
+  });
   render();
 }
