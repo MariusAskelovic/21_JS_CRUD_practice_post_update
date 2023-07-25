@@ -30,7 +30,6 @@ function newPostHandler(event) {
     userId: 15,
   };
 
-  console.log('newPostObj ===', newPostObj);
   sendNewPostFetch(newPostObj);
 }
 
@@ -45,7 +44,7 @@ function sendNewPostFetch(newPostDataObj) {
   })
     .then((resp) => resp.json())
     .then((postResult) => {
-      console.log('porest result === ', postResult);
+      console.log('post result === ', postResult);
       if (postResult.id) {
         // jei id gryzo, tai sukurtas irasas
         console.log('sekme');
@@ -54,6 +53,9 @@ function sendNewPostFetch(newPostDataObj) {
       } else {
         // kitu atveju klaida
         console.warn('kazkas nepavyko', postResult.message);
+        const h1El = document.querySelector('.container h1');
+        h1El.textContent = postResult.message;
+        h1El.style.color = 'red';
       }
     })
     .catch(console.warn);
