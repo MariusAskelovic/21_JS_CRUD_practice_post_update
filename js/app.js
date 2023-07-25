@@ -6,6 +6,7 @@ const els = {
   sortTitleBtn: document.getElementById('sort-title'),
   sortTitleBtnReverse: document.getElementById('sort-title-reverse'),
   title15Btn: document.getElementById('title15'),
+  cards20Btn: document.getElementById('cards20'),
 };
 console.log('els ===', els);
 const url = 'https://dummyjson.com/posts';
@@ -21,6 +22,7 @@ let mainPostArr = [];
 els.sortTitleBtn.addEventListener('click', sortPostByTitle);
 els.sortTitleBtnReverse.addEventListener('click', sortPostByTitleReverse);
 els.title15Btn.addEventListener('click', title15);
+els.cards20Btn.addEventListener('click', cards20);
 
 getPosts();
 
@@ -81,4 +83,14 @@ function title15() {
     return postObj;
   });
   render();
+}
+
+function cards20() {
+  fetch(url + '?limit=20')
+    .then((resp) => resp.json())
+    .then((atsObj) => {
+      mainPostArr = atsObj.posts;
+      render();
+    })
+    .catch(console.warn);
 }
