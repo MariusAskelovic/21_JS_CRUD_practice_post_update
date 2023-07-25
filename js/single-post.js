@@ -1,4 +1,3 @@
-import { crEl } from './helper/crEl.js';
 console.log('single-post.js file was loaded');
 
 const url = 'https://dummyjson.com/posts';
