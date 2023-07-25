@@ -3,6 +3,7 @@ console.log('app.js file was loaded');
 
 const els = {
   postContainer: document.getElementById('posts'),
+  sortTitleBtn: document.getElementById('sort-title'),
 };
 
 const url = 'https://dummyjson.com/posts';
@@ -14,6 +15,8 @@ const url = 'https://dummyjson.com/posts';
 // ir iskarto juos atspindesim HTML'e
 
 let mainPostArr = [];
+
+els.sortTitleBtn.addEventListener('click', sortPostByTitle);
 
 getPosts();
 
@@ -63,4 +66,14 @@ function makeOnePostEl(pObj) {
   );
   liEl.append(titleEl, pEl, linkEl);
   return liEl;
+}
+
+function sortPostByTitle() {
+  // isrikiuoti
+  mainPostArr.sort((aObj, bObj) => {
+    return aObj.title > bObj.title;
+  });
+  console.table(mainPostArr);
+  // perpiesti masyva po sorto
+  render();
 }
