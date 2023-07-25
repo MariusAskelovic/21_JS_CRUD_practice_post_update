@@ -54,7 +54,7 @@ to ========
 
 function makeOnePostEl(pObj) {
   const liEl = crEl('li', { class: 'post' });
-  const titleEl = crEl('h3', {}, pObj.title);
+  const titleEl = crEl('h3', {}, `_:${pObj.id}_ ${pObj.title}`);
   const pEl = crEl('p', {}, pObj.body.slice(0, 25) + '...');
   const linkEl = crEl(
     'a',
