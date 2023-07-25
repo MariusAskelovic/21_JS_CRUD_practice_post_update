@@ -4,6 +4,7 @@ console.log('app.js file was loaded');
 const els = {
   postContainer: document.getElementById('posts'),
   sortTitleBtn: document.getElementById('sort-title'),
+  sortTitleBtnBack: document.getElementById('sort-title-back'),
 };
 
 const url = 'https://dummyjson.com/posts';
@@ -17,6 +18,7 @@ const url = 'https://dummyjson.com/posts';
 let mainPostArr = [];
 
 els.sortTitleBtn.addEventListener('click', sortPostByTitle);
+els.sortTitleBtnBack.addEventListener('click', sortPostByTitleReverse);
 
 getPosts();
 
@@ -61,7 +63,7 @@ function makeOnePostEl(pObj) {
   const pEl = crEl('p', {}, pObj.body.slice(0, 25) + '...');
   const linkEl = crEl(
     'a',
-    { class: 'post-link', href: 'single-post.html' },
+    { class: 'post-link', href: `single-post.html?pId=${pObj.id}` },
     'read more...'
   );
   liEl.append(titleEl, pEl, linkEl);
@@ -70,10 +72,14 @@ function makeOnePostEl(pObj) {
 
 function sortPostByTitle() {
   // isrikiuoti
-  mainPostArr.sort((aObj, bObj) => {
-    return aObj.title > bObj.title;
-  });
-  console.table(mainPostArr);
+  mainPostArr.sort((aObj, bObj) => aObj.title > bObj.title);
   // perpiesti masyva po sorto
+  render();
+}
+
+function sortPostByTitleReverse() {
+  mainPostArr.sort((aObj, bObj) => {
+    return aObj.title < bObj.title;
+  });
   render();
 }
