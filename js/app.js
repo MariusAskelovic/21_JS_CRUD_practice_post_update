@@ -4,6 +4,7 @@ console.log('app.js file was loaded');
 const els = {
   postsContainer: document.getElementById('posts'),
   sortTitleBtn: document.getElementById('sort-title'),
+  sortTitleBtnReverse: document.getElementById('sort-title-reverse'),
 };
 console.log('els ===', els);
 const url = 'https://dummyjson.com/posts';
@@ -17,6 +18,7 @@ const url = 'https://dummyjson.com/posts';
 let mainPostArr = [];
 
 els.sortTitleBtn.addEventListener('click', sortPostByTitle);
+els.sortTitleBtnReverse.addEventListener('click', sortPostByTitleReverse);
 
 getPosts();
 
@@ -38,32 +40,19 @@ function render() {
   console.log('htmlElArr ===', htmlElArr);
   els.postsContainer.append(...htmlElArr);
 }
-/*
-{
-  id: 1,
-  title: 'His mother had always taught him',
-  body: "His mother ",
-  userId: 9,
-  tags: ['history', 'american', 'crime'],
-  reactions: 2,
-}
-to 
-<li class="post">
-  <h3>title</h3>
-  <p>intro</p>
-  <a class="post-link" href="#">read more...</a>
-</li>
-*/
+
 function makeOnePostEl(pObj) {
   const liEl = crEl('li', { class: 'post' });
   const titleEl = crEl('h3', {}, `_${pObj.id}_ ${pObj.title}`);
   const pEl = crEl('p', {}, pObj.body.slice(0, 25) + '...');
+  const reactionsEl = crEl('p', { class: 'rating' });
+  reactionsEl.innerHTML = pObj.reactions + ' &#x2605;';
   const linkEl = crEl(
     'a',
     { class: 'post-link', href: `single-post.html?pId=${pObj.id}` },
     'Read more...'
   );
-  liEl.append(titleEl, pEl, linkEl);
+  liEl.append(titleEl, pEl, reactionsEl, linkEl);
   // console.log('liEl ===', liEl);
   return liEl;
 }
@@ -72,16 +61,14 @@ function sortPostByTitle() {
   console.log('sortPostByTitle ran');
   // isrikiuoti
   mainPostArr.sort((aObj, bObj) => {
-    // if (aObj.title < bObj.title) {
-    //   return -1;
-    // } else if (aObj.title > bObj.title) {
-    //   return 1;
-    // } else {
-    //   return 0;
-    // }
     return aObj.title.localeCompare(bObj.title);
   });
   console.table(mainPostArr);
   // perpiesti masyva po isrikiavimo
+  render();
+}
+
+function sortPostByTitleReverse() {
+  mainPostArr.sort((aObj, bObj) => aObj.title < bObj.title);
   render();
 }
