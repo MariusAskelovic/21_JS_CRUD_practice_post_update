@@ -3,7 +3,7 @@
  * @param {String} tagname
  * @param {Object} attrsObj
  * @param {String} text
- * @returns  {HTMLElement}
+ * @returns {HTMLElement}
  */
 export function crEl(tagname, attrsObj = {}, text = '') {
   const newEl = document.createElement(tagname);

@@ -49,3 +49,12 @@ header .container {
 .tags {
   border-top: 1px solid #000;
 }
+
+/* new-post.html */
+
+.new-post {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: start;
+}

@@ -5,8 +5,10 @@ const url = 'https://dummyjson.com/posts';
 const contentEl = document.getElementById('content');
 
 // gauti pId is url parametru
+
 const params = new URLSearchParams(window.location.search);
 const postId = params.get('pId');
+console.log('postId ===', postId);
 
 // parsiusti to posto objekta
 
@@ -14,22 +16,31 @@ function getPostById() {
   fetch(`${url}/${postId}`)
     .then((resp) => resp.json())
     .then((postObj) => {
+      console.log('postObj ===', postObj);
       renderPost(postObj);
     })
-    .catch(console.log('Errorino'));
+    .catch(console.warn);
 }
 getPostById();
 // sugeneruoti html
 
 /*
-<h1>title</h1>
+{
+  id: 1,
+  title: 'His mother had always taught him',
+  body: "His mother ",
+  userId: 9,
+  tags: ['history', 'american', 'crime'],
+  reactions: 2,
+}
+
+<h1 class='main-title'>title</h1>
 <p class="text">body</p>
 <ul class="unlisted">
-    <li class="tag">tag</li>
+  <li class="tag">tag</li>
 </ul>
 <p class="react">2 People liked the post</p>
 */
-
 function renderPost(pObj) {
   console.log('renderPost ran ', pObj);
   const title = crEl('h1', { class: 'main-title' }, pObj.title);
