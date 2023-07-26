@@ -8,7 +8,7 @@ const els = {
   title15Btn: document.getElementById('title15'),
   cards20Btn: document.getElementById('cards20'),
 };
-console.log('els ===', els);
+// console.log('els ===', els);
 const url = 'https://dummyjson.com/posts';
 
 // Declarative way
@@ -41,7 +41,10 @@ function render() {
   // spauzdindami gautime parsiustus duomenis
   // console.log('render fn mainPostArr ===', mainPostArr);
   const htmlElArr = mainPostArr.map((pObj) => makeOnePostEl(pObj));
+  // ===== mano budas update posts count
+  // els.postCount.textContent = mainPostArr.length + ' post loaded';
   // console.log('htmlElArr ===', htmlElArr);
+
   els.postsContainer.append(...htmlElArr);
 }
 
@@ -93,4 +96,10 @@ function cards20() {
       render();
     })
     .catch(console.warn);
+}
+
+function updatePostsCount() {
+  const postsCount = mainPostArr.length;
+  console.log('postsCount ===', postsCount);
+  return postsCount;
 }

@@ -23,7 +23,7 @@
     </header>
     <!-- sukurti forma kuri leidzia supildyti title, price, brand, category, thumbnail, -->
     <div class="container">
-        <h1>Add new product</h1>
+        <h1 class="tac">Add new product</h1>
         <form id="newProduct" class="new-product">
             <div class="inputBlock">
                 <label for="title">Title:</label>
@@ -34,22 +34,25 @@
                 <input type="text" id="price" name="price">
             </div>
             <div class="inputBlock">
-                <label for="brand">Price:</label>
+                <label for="brand">Brand:</label>
                 <input type="text" id="brand" name="brand">
             </div>
             <div class="inputBlock">
-                <label for="thumbnail">Price:</label>
+                <label for="thumbnail">Thumbnail link:</label>
                 <input type="text" id="thumbnail" name="thumbnail">
             </div>
-            <select name="category" id="category">
-                <option hidden>choose category</option>
-                <option value="smartphones">smartphones</option>
-                <option value="laptops">laptops</option>
-                <option value="fragrances">fragrances</option>
-                <option value="skincare">skincare</option>
-                <option value="groceries">groceries</option>
-                <option value="home-decoration">home decoration</option>
-            </select>
+            <div class="inputBlock">
+                <label for="category">Category:</label>
+                <select name="category" id="category">
+                    <option hidden>choose category</option>
+                    <option value="smartphones">smartphones</option>
+                    <option value="laptops">laptops</option>
+                    <option value="fragrances">fragrances</option>
+                    <option value="skincare">skincare</option>
+                    <option value="groceries">groceries</option>
+                    <option value="home-decoration">home decoration</option>
+                </select>
+            </div>
 
             <button type="submit">Create</button>
         </form>
